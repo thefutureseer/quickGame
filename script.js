@@ -14,7 +14,7 @@ function computerPick(randoNumo) {
  console.log(compPicked, "comp picked!")
  
  
- confirm(`so far you have ${lost} looses & ${wins} wins.`+"Ok to play!");
+ confirm(`You have ${lost} looses & ${wins} wins.`+"Ok to play!");
  //add switch
   if (true) {
     const myPick = prompt("pick r,p,s..");
