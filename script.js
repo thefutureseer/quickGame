@@ -14,9 +14,9 @@ function computerPick(randoNumo) {
  console.log(compPicked, "comp picked!")
  
  
- confirm(`You have ${lost} looses & ${wins} wins.`+"Ok to play!");
+ var conf = confirm(`You have ${lost} looses & ${wins} wins.`+"Ok to play!");
  //add switch
-  if (true) {
+  if (conf) {
     const myPick = prompt("pick r,p,s..");
     if (myPick) {
      if(compPicked === myPick) {
@@ -40,7 +40,9 @@ function computerPick(randoNumo) {
       computerPick(randomNum);
      }
     } 
-  }
+  } else {
+    alert("see ya");
+    }
 }
 //game loads on page load
 computerPick(randomNum);
