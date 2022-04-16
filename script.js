@@ -1,46 +1,51 @@
+var startwins = 0;
+var startlost = 0;
+
+
+
 //Random number between 0-2 and get that index of the letters array
 //This will be the computers pick
 const randomNum = Math.floor(Math.random() * 10 % 3);
-console.log(randomNum, " random number");
+// console.log(randomNum, " random number");
 
-let lost = localStorage.setItem("losses", 0);
-let wins = localStorage.setItem("wins", 0);
 
-//reach into local storage
-lost = localStorage.getItem("looses");
-wins = localStorage.getItem("wins");
+sessionStorage.setItem("looses", JSON.stringify(startlost));
+sessionStorage.setItem("wins", JSON.stringify(startwins));
 
-//Function to get computers random pick on page load
+//Function to get computers random pick 
 function computerPick(randoNumo) {
+  var conf;
+  
   const lettersArray = ["r", "p", "s"];
-
- var compPicked = lettersArray[randoNumo]
- console.log(compPicked, "comp picked!")
- 
- 
- var conf = confirm(`so far you have ${lost} looses & ${wins} wins.`+"Ok to play?");
- //add switch
+  
+  var compPicked = lettersArray[randoNumo]
+  console.log(compPicked, "comp picked!")
+  
+  conf = confirm(`so far you have ${startlost} looses & ${startwins} wins.` + "Ok to play?");
+  
+  //add switch
   if (conf) {
     const myPick = prompt("pick r,p,s..");
     if (myPick) {
      if(compPicked === myPick) {
       //  console.log("r");
       //wins tick up once
-      //and set wins into local storage
-      wins++;
-      // localStorage.setItem("wins", wins);
-
+      startwins++;
+      //set wins into local storage
+      sessionStorage.setItem("wins", JSON.stringify(startwins));
+      
       alert("you choose wisely, lets see if you can do it again")
       confirm(" you Win! Would you like to play again?");
+      console.log(startwins,"wins after set?")
       //game loads 
       computerPick(randomNum);
      } else {
       console.log('you lost');
       //looses ticks up
-      //and put looses into local storage
-      lost++;
-      // localStorage.setItem("looses", lost);
-      // lost = localStorage.getItem("looses");
+      startlost++;
+      //put looses into local storage
+      sessionStorage.setItem("looses", JSON.stringify(startlost));
+      // lost = sessionStorage.getItem("looses");
       alert("bad gamble, lets see if you can win now!")
 
       //confirm you lost
@@ -54,5 +59,8 @@ function computerPick(randoNumo) {
     alert("see ya")
   }
 }
-//game loads on page load
+//game loads onclick
+function play() {
+  console.log("clicked")
 computerPick(randomNum);
+}
