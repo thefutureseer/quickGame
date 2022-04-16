@@ -11,7 +11,7 @@ sessionStorage.setItem("wins", JSON.stringify(startwins));
 //Function to get computers random pick 
 function computerPick(randoNumo) {
   var conf;
-  const lettersArray = ["r", "p", "s"];
+  const lettersArray = ["1", "2", "3"];
   
   var compPicked = lettersArray[randoNumo]
   console.log(compPicked, "comp picked!")
@@ -20,7 +20,7 @@ function computerPick(randoNumo) {
   
   //conditional to play or not to play
   if (conf) {
-    const myPick = prompt("pick r,p,s..");
+    const myPick = prompt("pick 1, 2, or 3");
     if (myPick) {
      if(compPicked === myPick) {
       //wins tick up once
